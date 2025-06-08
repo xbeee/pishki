@@ -16,5 +16,65 @@
     <body>
         @include('header')
         @yield('content')
+        <div class="modal modal-login d-flex align-items-center justify-content-center fromAskMeConsultation">
+            <div class="modalBckg"></div>
+            <div class="modalBlockWrapper d-flex justify-content-center">
+
+                <div class="modalBlock d-flex flex-column">
+                    <div class="modalBlockHeader d-flex align-items-center justity-content-between">
+                        <img class="modalBlockHeaderLogo" src="/media/modal/logo.png" alt="logo">
+                        <img class="modalClose" src="/media/modal/close-icon.svg" alt="close">
+                    </div>
+                    <div class="modalBlockTitle d-flex flex-column">
+                        <h4>вход по почте</h4>
+                        <p>только для зарегистрированных пользователей</p>
+                    </div>
+                    <form class="modalBlockFormAuth d-flex flex-column" autocomplete="off">
+                        @csrf
+                        <div class="fields d-flex flex-column">
+                            <input type="email" name="email" required placeholder="Электронная почта">
+                            <input type="password" name="password" required placeholder="Пароль">
+                            <button type="submit">войти</button>
+                        </div>
+                        <div class="fields-bottom d-flex flex-column">
+                            <p>если у вас нет аккаунта вы можете зарегестрироваться</p>
+                            <button class="redirect-btn register">регистрация</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal modal-register d-flex align-items-center justify-content-center fromAskMeConsultation active">
+            <div class="modalBckg"></div>
+            <div class="modalBlockWrapper d-flex justify-content-center">
+
+                <div class="modalBlock d-flex flex-column">
+                    <div class="modalBlockHeader d-flex align-items-center justity-content-between">
+                        <img class="modalBlockHeaderLogo" src="/media/modal/logo.png" alt="logo">
+                        <img class="modalClose" src="/media/modal/close-icon.svg" alt="close">
+                    </div>
+                    <div class="modalBlockTitle d-flex flex-column">
+                        <h4>регистрация</h4>
+                    </div>
+                    <form class="modalBlockFormRegister d-flex flex-column" autocomplete="off">
+                        @csrf
+                        <div class="fields d-flex flex-column">
+                            <input type="text" name="name" required placeholder="Ваше имя">
+                            <input type="email" name="email" required placeholder="Электронная почта">
+                            <input type="password" name="password" required placeholder="Пароль" minlength="6">
+                            <div class="checkbox d-flex align-items-center  ">
+                                <input type="checkbox" name="policy" required>
+                                <p>согласие на обработку персональных данных</p>
+                            </div>
+                            <button type="submit">зарегистрироваться</button>
+                        </div>
+                        <div class="fields-bottom d-flex flex-column">
+                            <p>уже есть аккаунт?</p>
+                            <button class="redirect-btn login">войти</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

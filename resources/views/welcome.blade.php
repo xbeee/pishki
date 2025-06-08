@@ -1,39 +1,30 @@
-<!-- extends our layout -->
+
 @extends('layout')
 
-<!-- Content -->
 @section('content')
-    <section class="auth-form">
+    <section class="main-page">
         <div class="container">
-            <div class="auth-form d-flex-flex-column">
-                <h4>
-                    Авторизация
-                </h4>
-                <form id="auth-form">
-                    <input type="text" placeholder="Логин" name="login">
-                    <input type="password" placeholder="Пароль" name="password">
-                    <button>Авторизоваться</button>
-                </form>
+            <div class="main-page-content d-flex flex-column align-items-center">
+                <div class="main-page-slogan d-flex flex-column align-items-center">
+                    <div class="first d-flex align-items-end">
+                        <p>наши</p>
+                        <span>пышки</span>
+                        <p>едут</p>
+                    </div>
+                    <p>к тебе</p>
+                </div>
+                <div class="main-page-content-image d-flex flex-column align-items-center">
+                    <div class="wrap position-relative">
+                        <img src="/media/main/main-image.png" alt="image">
+                        <p class="text text-1">сделано с <br/> любовью</p>
+                        <p class="text text-2">ничего лишнего <br/> — только вкус</p>
+                        <p class="text text-3">пышно и по-<br/>настоящему</p>
+                        <p class="text text-4">натуральные <br/> ингридиенты</p>
+                    </div>
+                    <a href="/menu" class="main-page-content-image-link">Смотреть меню</a>
+                </div>
             </div>
         </div>
-          <script>
-      document.addEventlistner("DOMContentLoaded", () => {
-        // обработчик на кнопку
-        const btnOpen = document.querySelector(".header-btn"); // Находим кнопку открытия
-        const btnClose = document.querySelector(".close"); // Находим кнопку закрытия
-        const nav = document.querySelector(".nav"); // Находим навигацию
-        btnOpen.addEventlistner("click", () => {
-          // Вешаем обработку на клик
-          nav.classList.add("active"); // добавляем класс для навигации
-          document.body.style.overflow = "hidden"; // убираем скролл страницы
-        });
 
-        btnClose.addEventlistner("click", () => {
-          // Вешаем обработку на клик
-          nav.classList.remove("active"); // добавляем класс для навигации
-          document.body.style.overflow = "auto"; // добавляем скролл страницы
-        });
-      });
-    </script>
     </section>
 @endsection

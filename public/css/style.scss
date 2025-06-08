@@ -1,3 +1,9 @@
+$darkBrown: #6B3E1D;
+$brown: #F5D7A3;
+$cream: #FFF8ED;
+$milkSmoke: #F0E7D5;
+$white: #ffffff;
+
 body{
     margin: 0;
     padding: 0;
@@ -37,6 +43,7 @@ h1,h2,h3,h4,h5,p,ul,li{
     padding: 17px 0;
     position: sticky;
     top: 0;
+    background-color: $white;
 
     &-button{
         outline: none;
@@ -46,10 +53,10 @@ h1,h2,h3,h4,h5,p,ul,li{
     }
 
     &-auth-btn{
-        color: #6B3E1D;
+        color: $darkBrown;
 
         padding: 12px 43px;
-        background-color: #F5D7A3;
+        background-color: $brown;
         outline: none;
         border: none;
         transition: .3s;
@@ -110,7 +117,7 @@ h1,h2,h3,h4,h5,p,ul,li{
 
             &-block {
                 transition: all .3s ease;
-                background: #fff;
+                background: $white;
                 position: absolute;
                 top: 0;
                 bottom: 0;
@@ -124,7 +131,7 @@ h1,h2,h3,h4,h5,p,ul,li{
                 &-list{
                     row-gap: 30px;
                     a{
-                        color: #6B3E1D;
+                        color: $darkBrown;
                         font-size: 36px;
                         transition: .3s;
                         text-decoration: none;
@@ -142,13 +149,13 @@ h1,h2,h3,h4,h5,p,ul,li{
         gap: 20px;
         svg{
             path{
-                color: #6B3E1D;
+                color: $darkBrown;
                 transition: .3s;
 
             }
             &:hover{
                 path{
-                    color: #F5D7A3;
+                    color: $brown;
                 }
             }
         }
@@ -288,3 +295,364 @@ h1,h2,h3,h4,h5,p,ul,li{
 //}
 
 ////////////////
+
+//main page
+.main-page{
+    &-slogan{
+        .first{
+            p{
+                font-size: 64px;
+                color: $darkBrown;
+                line-height: 100%;
+            }
+            span{
+                font-size: 128px;
+                line-height: 80%;
+                color: $darkBrown;
+                font-weight: bold;
+            }
+        }
+        p{
+            font-size: 96px;
+            color: $darkBrown;
+        }
+    }
+    &-content{
+        row-gap: 30px;
+        &-image{
+            row-gap: 30px;
+            .wrap{
+                .text{
+                    font-size: 36px;
+                    color: $darkBrown;
+                    position: absolute;
+                }
+                .text-1{
+                    top: -14px;
+                    left: -123px;
+                }
+                .text-2{
+                    top: -39px;
+                    right: -279px;
+                }
+                .text-3{
+                    bottom: 15px;
+                    left: -259px;
+                }
+                .text-4{
+                    bottom: 40px;
+                    right: -259px;
+                }
+            }
+            &-link{
+                color: $darkBrown;
+                background-color: $brown;
+                padding: 23px 63px;
+                border-radius: 50px;
+                font-size: 32px;
+                transition: .3s;
+                text-decoration: none;
+                &:hover{
+                    color: inherit;
+                    opacity: .7;
+                }
+            }
+        }
+    }
+    @media (max-width: 1400px) and (min-width: 992px) {
+        &-content{
+            row-gap: 50px;
+            &-image{
+                row-gap: 50px;
+                .wrap{
+                    img{
+                        width: 388px;
+                    }
+                    .text-1{
+                        top: -39px;
+                        left: -155px;
+                    }
+                    .text-2{
+                        top: -73px;
+                        right: -269px;
+                    }
+                    .text-3{
+                        bottom: -26px;
+                        left: -259px;
+                    }
+                    .text-4{
+                        bottom: 23px;
+                        right: -279px;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 992px) and (min-width: 576px) {
+        &-slogan{
+            .first{
+                p{
+                    font-size: 28px;
+                    color: $darkBrown;
+                    line-height: 100%;
+                }
+                span{
+                    font-size: 64px;
+                    line-height: 80%;
+                    color: $darkBrown;
+                    font-weight: bold;
+                }
+            }
+            p{
+                font-size: 57px;
+                color: $darkBrown;
+            }
+        }
+        &-content{
+            row-gap: 50px;
+            &-image{
+                row-gap: 50px;
+                .wrap{
+                    img{
+                        width: 239px;
+                    }
+                    .text{
+                        font-size: 16px;
+                    }
+                    .text-1{
+                        top: -7px;
+                        left: -66px;
+                    }
+                    .text-2{
+                        top: -25px;
+                        right: -107px;
+                    }
+                    .text-3{
+                        bottom: -10px;
+                        left: -88px;
+                    }
+                    .text-4{
+                        bottom: 0px;
+                        right: -111px;
+                    }
+                }
+                &-link{
+                    padding: 12px 33px;
+                    border-radius: 50px;
+                    font-size: 16px;
+
+                }
+            }
+        }
+    }
+    @media (max-width: 576px) {
+        &-slogan{
+            .first{
+                p{
+                    font-size: 23px;
+                    color: $darkBrown;
+                    line-height: 100%;
+                }
+                span{
+                    font-size: 47px;
+                    line-height: 80%;
+                    color: $darkBrown;
+                    font-weight: bold;
+                }
+            }
+            p{
+                font-size: 36px;
+                color: $darkBrown;
+            }
+        }
+        &-content{
+            row-gap: 30px;
+            &-image{
+                row-gap: 30px;
+                .wrap{
+                    img{
+                        width: 126px;
+                    }
+                    .text{
+                        font-size: 9px;
+                    }
+                    .text-1{
+                        top: -7px;
+                        left: -26px;
+                    }
+                    .text-2{
+                        top: -25px;
+                        right: -57px;
+                    }
+                    .text-3{
+                        bottom: -10px;
+                        left: -58px;
+                    }
+                    .text-4{
+                        bottom: 0px;
+                        right: -60px;
+                    }
+                }
+                &-link{
+                    padding: 7px 20px;
+                    border-radius: 50px;
+                    font-size: 9px;
+
+                }
+            }
+        }
+    }
+}
+
+//modal
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+
+        .askBlockWrapper {
+            transform: translateY(0);
+        }
+    }
+
+    &Bckg {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    &Close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    &Block {
+        padding: 20px 60px 44px 60px;
+        border-radius: 50px;
+        background-color: $white;
+        width: 544px;
+        position: relative;
+        row-gap: 30px;
+
+        &Header {
+            font-size: 29px;
+            font-weight: 500;
+            line-height: 120%;
+            color: #000;
+            &Logo{
+                width: 251px;
+            }
+        }
+
+        &Wrapper {
+            transition: transform .3s ease;
+        }
+
+        &Form {
+            row-gap: 50px;
+            .fields{
+                row-gap: 10px;
+                input{
+                    background-color: $white;
+                    border: 3px solid $darkBrown;
+                    padding: 15px;
+                    font-size: 24px;
+                    border-radius: 10px;
+                    line-height: 100%;
+                    color: $darkBrown;
+                    &::placeholder{
+                        color: rgba($darkBrown, 50%);
+                    }
+                }
+                button{
+                    margin-top: 10px;
+                    width: 100%;
+                    background-color: $darkBrown;
+                    padding: 17px 10px;
+                    color: $white;
+                    transition: .3s;
+                    font-size: 24px;
+                    border-radius: 20px;
+                    &:hover{
+                        opacity: .7;
+                    }
+                }
+                .checkbox{
+                    column-gap: 5px;
+                    input{
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 10px;
+                    }
+                    p{
+                        font-size: 14px;
+                        color: $darkBrown;
+                    }
+                }
+                &-bottom{
+                    row-gap: 5px;
+                    p{
+                        font-size: 24px;
+                        color: $darkBrown;
+                        line-height: 100%;
+                        text-align: justify;
+                    }
+                    .redirect-btn{
+                        width: 100%;
+                        background-color: $darkBrown;
+                        padding: 17px 10px;
+                        color: $white;
+                        transition: .3s;
+                        font-size: 24px;
+                        border-radius: 20px;
+                        &:hover{
+                            opacity: .7;
+                        }
+                    }
+                }
+            }
+        }
+        &Title{
+            row-gap: 20px;
+            width: 100%;
+            h4{
+                font-size: 36px;
+                color: $darkBrown;
+            }
+            p{
+                font-size: 23px;
+                color: $darkBrown;
+                text-align: justify;
+            }
+        }
+
+
+
+
+    }
+
+}
+
