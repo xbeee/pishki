@@ -9,51 +9,60 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-     public function register(Request $request)
-    {
-        $validated = $request->validate([
-            'fio' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'number' => 'required|string|max:20',
-            'login' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'role' => 'sometimes|string|in:user,admin',
-        ]);
-
-        $user = User::create([
-            'fio' => $validated['fio'],
-            'email' => $validated['email'],
-            'number' => $validated['number'],
-            'login' => $validated['login'],
-            'password' => Hash::make($validated['password']),
-            'role' => $validated['role'] ?? 'user',
-        ]);
-
-        return response()->json(['message' => 'User registered successfully'], 201);
-    }
-
-    // Авторизация
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'login' => 'required|string',
-            'password' => 'required|string',
-        ]);
+        $user = User::where('email', $request->email)->first();
 
-        if (Auth::attempt(['login' => $credentials['login'], 'password' => $credentials['password']])) {
-            $request->session()->regenerate();
-            return response()->json(['message' => 'Login successful']);
+        if(!$user){
+            return response()->json([
+                'message' => 'Пользователь не найден',
+                'status_code' => 409
+            ], 409);
         }
 
-        return response()->json(['message' => 'Invalid credentials'], 401);
+        if(!Hash::check($request->password, $user->password)){
+            return response()->json([
+                'message' => 'Неверный пароль',
+                'status_code' => 409
+            ], 409);
+        }
+
+        Auth::login($user);
+
+        return response()->json([
+            'status_code' => 200,
+            'message' => 'Авторизация успешна'
+        ], 200);
     }
 
-    // Выход
-    public function logout(Request $request)
-    {
+    public function register(Request $request){
+        $userExist = User::where('email', $request->email)->first();
+
+        if($userExist){
+            return response()->json([
+                'message' => 'User already exists',
+                'status_code' => 409,
+            ], 409);
+        }else{
+            $user = User::create([
+                'name'=> $request->name,
+                'email'=> $request->email,
+                'password' => Hash::make($request->password),
+                'role' => 'user'
+            ]);
+
+            Auth::login($user);
+
+            return response()->json([
+                'status_code' => 200,
+                'message' => 'Регистрация успешна'
+            ], 200);
+        }
+    }
+    public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return response()->json(['message' => 'Logged out']);
+        return response()->json(['message'=>'Успешно', 'status'=>200],200);
     }
 }

@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const registerForm = document.querySelector('.modalBlockFormRegister');
 
     registerForm.addEventListener('submit', (e)=>{
-        event.preventDefault();
+        e.preventDefault();
 
         const fd = new FormData(registerForm);
 
@@ -62,14 +62,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
             method: "POST"
         }).then(resp => resp.json())
             .then(result => {
-                if(result.status === 500){
-                    alert('Ошибка сервера. Повторите попытку!');
-                }else if(result.status === 409){
+                if(result.status === 409){
                     alert('Пользователь с таким email уже существует');
                 }else{
                     window.location.href = '/'
                 }
-            });
+            })
+            .catch(e =>{
+                alert('Ошибка сервера. Повторите попытку!' + e);
+            })
+        ;
     });
 });
 
@@ -77,27 +79,25 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const loginForm = document.querySelector('.modalBlockFormLogin');
 
     loginForm.addEventListener('submit', (e)=>{
-        event.preventDefault();
+        e.preventDefault();
 
         const fd = new FormData(loginForm);
 
-        if(fd.get('password').length < 6){
-            alert('Пароль должен быть более 6 символов1')
-            return;
-        }
 
         fetch('/api/login', {
             body: fd,
             method: "POST"
         }).then(resp => resp.json())
             .then(result => {
-                if(result.status === 500){
-                    alert('Ошибка сервера. Повторите попытку!');
-                }else if(result.status === 403){
-                    alert('Неверный логин или пароль');
+                if(result.status_code === 409){
+                    alert(result.message);
                 }else{
                     window.location.href = '/'
                 }
-            });
+            })
+            .catch((e)=>{
+                alert('Ошибка сервера. Повторите попытку! ' + e);
+            })
+        ;
     });
 });

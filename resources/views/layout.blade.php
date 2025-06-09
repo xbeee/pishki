@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="/fonts/stylesheet.css">
         <!--   javascript    -->
         <script type="module" src="/js/script.js"></script>
+        <link rel="stylesheet" href="/bootstrap-5.3.6-dist/css/bootstrap.min.css">
+        <script type="module" src="/bootstrap-5.3.6-dist/js/bootstrap.min.js"></script>
     </head>
     <body>
         @include('header')
@@ -25,11 +27,12 @@
                         <img class="modalBlockHeaderLogo" src="/media/modal/logo.png" alt="logo">
                         <img class="modalClose" src="/media/modal/close-icon.svg" alt="close">
                     </div>
+
                     <div class="modalBlockTitle d-flex flex-column">
                         <h4>вход по почте</h4>
                         <p>только для зарегистрированных пользователей</p>
                     </div>
-                    <form class="modalBlockFormAuth d-flex flex-column" autocomplete="off">
+                    <form class="modalBlockFormLogin d-flex flex-column" autocomplete="off">
                         @csrf
                         <div class="fields d-flex flex-column">
                             <input type="email" name="email" required placeholder="Электронная почта">
