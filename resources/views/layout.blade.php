@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Пышечки</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -18,7 +18,9 @@
     <body>
         @include('header')
         @yield('content')
-        <div class="modal modal-login d-flex align-items-center justify-content-center fromAskMeConsultation">
+        <!--    Чтобы модалку сделать активной нужно добавить класс active    -->
+        <!--    <div class="modal modal-login d-flex align-items-center justify-content-center active">    -->
+        <div class="modal modal-login d-flex align-items-center justify-content-center">
             <div class="modalBckg"></div>
             <div class="modalBlockWrapper d-flex justify-content-center">
 
@@ -32,7 +34,7 @@
                         <h4>вход по почте</h4>
                         <p>только для зарегистрированных пользователей</p>
                     </div>
-                    <form class="modalBlockFormLogin d-flex flex-column" autocomplete="off">
+                    <form class="modalBlockForm modalBlockFormLogin d-flex flex-column" autocomplete="off">
                         @csrf
                         <div class="fields d-flex flex-column">
                             <input type="email" name="email" required placeholder="Электронная почта">
@@ -47,7 +49,10 @@
                 </div>
             </div>
         </div>
-        <div class="modal modal-register d-flex align-items-center justify-content-center fromAskMeConsultation active">
+
+        <!--    Чтобы модалку сделать активной нужно добавить класс active    -->
+        <!--    <div class="modal modal-login d-flex align-items-center justify-content-center active">    -->
+        <div class="modal modal-register d-flex align-items-center justify-content-center">
             <div class="modalBckg"></div>
             <div class="modalBlockWrapper d-flex justify-content-center">
 
@@ -59,7 +64,7 @@
                     <div class="modalBlockTitle d-flex flex-column">
                         <h4>регистрация</h4>
                     </div>
-                    <form class="modalBlockFormRegister d-flex flex-column" autocomplete="off">
+                    <form class="modalBlockForm modalBlockFormRegister d-flex flex-column" autocomplete="off">
                         @csrf
                         <div class="fields d-flex flex-column">
                             <input type="text" name="name" required placeholder="Ваше имя">

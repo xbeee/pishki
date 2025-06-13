@@ -17,4 +17,9 @@ class Controller extends BaseController
             'user' => auth()->user()
         ]);
     }
+
+    public function menu()
+    {
+        return view('menu');
+    }
 }

@@ -23,7 +23,8 @@
 <!---->
 <!--            </div>-->
 
-
+            <!--    Чтобы сайдбар сделать активным нужно добавить класс active    -->
+            <!--    <div class="sidenav active">    -->
             <div class="sidenav">
                 <div class="sidenavBckg"></div>
                 <div class="sidenav-block d-flex flex-column">
