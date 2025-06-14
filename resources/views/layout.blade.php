@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Пышечки</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!--        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
         <!-- Styles -->
+        <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="/css/style.css">
         <!--  fonts  -->
         <link rel="stylesheet" href="/fonts/stylesheet.css">
@@ -14,13 +15,18 @@
         <script type="module" src="/js/script.js"></script>
         <link rel="stylesheet" href="/bootstrap-5.3.6-dist/css/bootstrap.min.css">
         <script type="module" src="/bootstrap-5.3.6-dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
         @include('header')
         @yield('content')
         <!--    Чтобы модалку сделать активной нужно добавить класс active    -->
         <!--    <div class="modal modal-login d-flex align-items-center justify-content-center active">    -->
-        <div class="modal modal-login d-flex align-items-center justify-content-center">
+        <div class="modal modal-login d-flex align-items-center justify-content-center  ">
             <div class="modalBckg"></div>
             <div class="modalBlockWrapper d-flex justify-content-center">
 
@@ -84,5 +90,6 @@
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </body>
 </html>

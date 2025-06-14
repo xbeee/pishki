@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\Controller::class,'index']);
 Route::get('/menu', [\App\Http\Controllers\Controller::class,'menu']);
+Route::get('/about', [\App\Http\Controllers\Controller::class,'about']);
+Route::get('/cart', [\App\Http\Controllers\Controller::class,'cart']);
+Route::get('/cart-empty', [\App\Http\Controllers\Controller::class,'cart_empty']);
+Route::get('/profile', [\App\Http\Controllers\Controller::class,'profile']);
+Route::get('/reviews', [\App\Http\Controllers\Controller::class,'reviews']);
+Route::get('/adminPanel', [\App\Http\Controllers\Controller::class,'adminPanel']);
 
 
 Route::post('/api/register', [AuthController::class, 'register'])->name('register');
