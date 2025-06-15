@@ -55,4 +55,9 @@ class Controller extends BaseController
     {
         return view('adminPanel');
     }
+
+    public function where()
+    {
+        return view('where');
+    }
 }

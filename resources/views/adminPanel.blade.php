@@ -92,7 +92,8 @@
                     </div>
 
                     <!-- Таблица меню -->
-                    <div class="content-table-wrapper" id="menu-content" style="display: none;">
+                    <button class="add-item-btn">Добавить товар</button>
+                    <div class="content-table-wrapper" id="menu-content">
                         <table class="table">
                             <thead>
                             <tr>
@@ -126,6 +127,7 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -172,6 +174,77 @@
                     <input type="email" name="email" placeholder="Email" >
                 </div>
                 <button>применить изменения</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-delete-item d-flex align-items-center justify-content-center">
+    <div class="modalBckg"></div>
+    <div class="modalBlockWrapper d-flex justify-content-center">
+
+        <div class="modalBlock d-flex flex-column">
+            <div class="modalBlockHeader d-flex align-items-center justity-content-between">
+                <img class="modalClose" src="/media/modal/close-icon.svg" alt="close">
+            </div>
+
+            <form class="modalBlockForm logout modalBlockFormLogin d-flex flex-column" autocomplete="off">
+                @csrf
+                <h5>вы хотите удалить <br/> товар “пышка”?</h5>
+                <div class="btns d-flex">
+                    <button type="submit">удалить</button>
+                    <button class="modalClose" type="button">отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-edit-item d-flex align-items-center justify-content-center">
+    <div class="modalBckg"></div>
+    <div class="modalBlockWrapper d-flex justify-content-center">
+
+        <div class="modalBlock d-flex flex-column">
+            <div class="modalBlockHeader d-flex align-items-center justity-content-between">
+                <img class="modalClose" src="/media/modal/close-icon.svg" alt="close">
+            </div>
+
+            <form class="modalBlockForm edit-add modalBlockFormLogin d-flex flex-column" autocomplete="off">
+                @csrf
+                <h5>Редактировать товар</h5>
+                <div class="fields d-flex flex-column">
+                    <input type="text" placeholder="Название товара">
+                    <input type="text" placeholder="Цена товара">
+                    <input type="text" placeholder="Вес товара с ед. измерения">
+                    <input type="text" placeholder="Калории">
+                    <input type="file">
+                </div>
+                <button>изменить товар</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-add-item d-flex align-items-center justify-content-center">
+    <div class="modalBckg"></div>
+    <div class="modalBlockWrapper d-flex justify-content-center">
+
+        <div class="modalBlock d-flex flex-column">
+            <div class="modalBlockHeader d-flex align-items-center justity-content-between">
+                <img class="modalClose" src="/media/modal/close-icon.svg" alt="close">
+            </div>
+
+            <form class="modalBlockForm edit-add modalBlockFormLogin d-flex flex-column" autocomplete="off">
+                @csrf
+                <h5>Добавить товар</h5>
+                <div class="fields d-flex flex-column">
+                    <input type="text" placeholder="Название товара">
+                    <input type="text" placeholder="Цена товара">
+                    <input type="text" placeholder="Вес товара с ед. измерения">
+                    <input type="text" placeholder="Калории">
+                    <input type="file">
+                </div>
+                <button>добавить товар</button>
             </form>
         </div>
     </div>

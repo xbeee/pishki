@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const logoutModal = document.querySelector('.modal-logout');
     const editModal = document.querySelector('.modal-edit');
     const deleteUserModal = document.querySelector('.modal-delete-user');
+    const deleteItemModal = document.querySelector('.modal-delete-item');
     const editUserModal = document.querySelector('.modal-edit-user');
+    const editItemModal = document.querySelector('.modal-edit-item');
+    const createItemModal = document.querySelector('.modal-add-item');
     const close = document.querySelectorAll('.modalClose');
     const authOpenBtn = document.querySelector('.header-auth-btn');
 
@@ -40,6 +43,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
             editModal?.classList.remove('active');
             deleteUserModal?.classList.remove('active');
             editUserModal?.classList.remove('active');
+            editItemModal?.classList.remove('active');
+            deleteItemModal?.classList.remove('active');
+            createItemModal?.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
     })
@@ -72,6 +78,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
         editUserModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
+    document.querySelector('.delete-item')?.addEventListener("click", ()=>{
+        deleteItemModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    document.querySelector('.edit-item')?.addEventListener("click", ()=>{
+        editItemModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    document.querySelector('.add-item-btn')?.addEventListener("click", ()=>{
+        createItemModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
 })
 
 
@@ -217,10 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Функция для получения общей суммы заказа
-    function getOrderTotal() {
-        const totalElement = document.querySelector('.summary-price span');
-        return parseInt(totalElement.textContent);
-    }
+    // function getOrderTotal() {
+    //     const totalElement = document.querySelector('.summary-price span');
+    //     return parseInt(totalElement.textContent);
+    // }
 
     // Функция для отправки данных на сервер
     function sendOrderData(orderData) {
@@ -379,6 +399,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.style.display = 'block';
+                if(targetSection.getAttribute('id') === 'menu-content'){
+                    document.querySelector('.add-item-btn').style.display = 'block';
+                }else{
+                    document.querySelector('.add-item-btn').style.display = 'none';
+                }
             }
         });
     });
@@ -386,4 +411,117 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navButtons.length > 0) {
         navButtons[0].click();
     }
+});
+
+
+//расписание
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.querySelector('.toggle-list');
+    const daysList = document.querySelector('.where-content-list');
+    const dayElements = document.querySelectorAll('.el');
+    const allSchedules = document.querySelectorAll('.day-schedule');
+    const selectedDayText = document.querySelector('.selected-day-text');
+
+    // Обработчик клика по SVG
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            // Скрываем все расписания при открытии списка
+            allSchedules.forEach(schedule => {
+                schedule.style.display = 'none';
+            });
+
+            // Переключаем видимость списка
+            daysList.style.display = daysList.style.display === 'none' ? 'flex' : 'none';
+        });
+    }
+
+    // Обработчик клика по дню недели
+    dayElements.forEach(el => {
+        el.addEventListener('click', function() {
+            const dayId = this.getAttribute('data-day');
+            const dayName = this.textContent;
+
+            // Обновляем текст выбранного дня
+            selectedDayText.textContent = dayName;
+
+            // Скрываем список
+            daysList.style.display = 'none';
+
+            // Показываем расписание выбранного дня
+            document.getElementById(dayId).style.display = 'flex';
+        });
+    });
+
+    // Закрытие списка при клике вне его области
+    document.addEventListener('click', function(e) {
+        if(daysList){
+            if (!daysList?.contains(e.target) && e.target !== toggleBtn) {
+                daysList.style.display = 'none';
+            }
+        }
+    });
+});
+
+
+// категории
+document.addEventListener('DOMContentLoaded', function() {
+    const menuGrid = document.querySelector('.menu-page-grid');
+    const categoryContainer = document.querySelector('.menu-page-category');
+    const allCards = document.querySelectorAll('.card-el');
+
+    // 1. Собираем все уникальные категории из карточек
+    const categories = new Set();
+    allCards.forEach(card => {
+        categories.add(card.dataset.category);
+    });
+
+    // 2. Создаем кнопки категорий
+    function renderCategories() {
+        // Добавляем кнопку "Все"
+        const allButton = document.createElement('div');
+        allButton.className = 'menu-page-category-element active';
+        allButton.textContent = 'все';
+        allButton.dataset.filter = 'all';
+        categoryContainer.appendChild(allButton);
+
+        // Добавляем остальные категории
+        categories.forEach(category => {
+            const button = document.createElement('div');
+            button.className = 'menu-page-category-element';
+            button.textContent = category;
+            button.dataset.filter = category;
+            categoryContainer.appendChild(button);
+        });
+    }
+
+    // 3. Логика фильтрации
+    function filterCards(category) {
+        allCards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Обновляем активную кнопку
+        document.querySelectorAll('.menu-page-category-element').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === category);
+        });
+    }
+
+    // 4. Инициализация
+    renderCategories();
+
+    // Обработчики кликов на категории
+    categoryContainer.addEventListener('click', function(e) {
+        if (e.target.classList.contains('menu-page-category-element')) {
+            filterCards(e.target.dataset.filter);
+        }
+    });
+
+    // Инициализируем показ всех карточек
+    filterCards('all');
 });

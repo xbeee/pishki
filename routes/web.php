@@ -22,6 +22,8 @@ Route::get('/cart-empty', [\App\Http\Controllers\Controller::class,'cart_empty']
 Route::get('/profile', [\App\Http\Controllers\Controller::class,'profile']);
 Route::get('/reviews', [\App\Http\Controllers\Controller::class,'reviews']);
 Route::get('/adminPanel', [\App\Http\Controllers\Controller::class,'adminPanel']);
+Route::get('/contacts', [\App\Http\Controllers\Controller::class,'contacts']);
+Route::get('/where', [\App\Http\Controllers\Controller::class,'where']);
 
 
 Route::post('/api/register', [AuthController::class, 'register'])->name('register');
